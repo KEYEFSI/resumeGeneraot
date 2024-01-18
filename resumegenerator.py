@@ -91,18 +91,103 @@ def userinterface():
     window.mainloop()
 
 def viewresume():
-    window = Tk()
-    window.title("CREATE RESUME")
-    window.geometry('800x1000+500+0')
-    window.config(bg='#5ED2E5')
-    window.resizable(False, False)
-    img = PhotoImage(file='resume1.png')
-    frame = Frame(window, width=700, height=1170, bg=img)
-    frame.place(x=10, y=10)
+    OUTPUT_PATH = Path(__file__).parent
+    ASSETS_PATH = OUTPUT_PATH / Path(
+        r"C:\Users\ADMIN\Desktop\3E FILES\RESUMEGENERATOR\pythonProject2\selecttemplate\build\assets\frame0")
 
-    heading = Label(frame, text='CREATE RESUME', fg='black', bg='#5ED2E5',
-                    font=('Microsoft Times New Roman', 16, 'bold'))
-    heading.place(x=300, y=10)
+    def relative_to_assets(path: str) -> Path:
+        return ASSETS_PATH / Path(path)
+
+    window = Tk()
+
+    window.geometry("800x400")
+    window.configure(bg="#FFFFFF")
+
+    canvas = Canvas(
+        window,
+        bg="#FFFFFF",
+        height=400,
+        width=800,
+        bd=0,
+        highlightthickness=0,
+        relief="ridge"
+    )
+
+    canvas.place(x=0, y=0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        400.0,
+        200.0,
+        image=image_image_1
+    )
+
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_1 clicked"),
+        relief="flat"
+    )
+    button_1.place(
+        x=737.0,
+        y=0.0,
+        width=63.0,
+        height=62.0
+    )
+
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        167.0,
+        62.0,
+        image=image_image_2
+    )
+
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    button_2 = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_2 clicked"),
+        relief="flat"
+    )
+    button_2.place(
+        x=369.0,
+        y=125.0,
+        width=150.0,
+        height=212.16407775878906
+    )
+
+    button_image_3 = PhotoImage(
+        file=relative_to_assets("button_3.png"))
+    button_3 = Button(
+        image=button_image_3,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_3 clicked"),
+        relief="flat"
+    )
+    button_3.place(
+        x=558.0,
+        y=125.0,
+        width=150.0,
+        height=212.16407775878906
+    )
+
+    canvas.create_text(
+        319.0,
+        70.0,
+        anchor="nw",
+        text="Please Select Template",
+        fill="#1E1E1E",
+        font=("PaytoneOne Regular", 20 * -1)
+    )
+    window.resizable(False, False)
+    window.mainloop()
 
 
 def inputcontext():

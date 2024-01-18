@@ -1,16 +1,889 @@
 from tkinter import *
-from tkinter import messagebox
-import sqlite3
-from datetime import date
-from tkinter import filedialog
-import os
-from tkinter.ttk import Combobox
 from pathlib import Path
 from tkinter import messagebox
 import sqlite3
+from PIL import ImageGrab
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas as pdf_canvas
+
+def template2():
+    def save_as_pdf():
+        pdf_file = "resume.pdf"
+
+        # Capture the Tkinter window as an image
+        x = window.winfo_rootx()
+        y = window.winfo_rooty()
+        width = window.winfo_width()
+        height = window.winfo_height()
+        screenshot = ImageGrab.grab(bbox=(x, y, x + width, y + height))
+
+        # Save the captured image to a file
+        screenshot.save("resume.png")
+
+        # Create a PDF and insert the captured image
+        c = pdf_canvas.Canvas(pdf_file, pagesize=letter)
+        image_path = "resume.png"
+        c.drawInlineImage(image_path, 0, 0, width=letter[0], height=letter[1])
+        c.save()
+
+        print(f"PDF saved as {pdf_file}")
+
+    OUTPUT_PATH = Path(__file__).parent
+    ASSETS_PATH = OUTPUT_PATH / Path(
+        r"C:\Users\ADMIN\Desktop\3E FILES\RESUMEGENERATOR\pythonProject2\template2\build\assets\frame0")
+
+    def relative_to_assets(path: str) -> Path:
+        return ASSETS_PATH / Path(path)
+
+    window = Tk()
+
+    window.geometry("612x792")
+    window.configure(bg="#FFFFFF")
+
+    global name, phone_number, email, job, place_address, firstwork, firstdate, secondwork
+    global seconddate, thirdwork, thirddate, aboutme, skills1, skills2, skills3, skills4, skills5, skills6, primaryeduc, primarydate, secondaryeduc, secondarydate
+    global tertiaryeduc, tertiarydate
 
 
+    canvas = Canvas(
+        window,
+        bg="#FFFFFF",
+        height=792,
+        width=612,
+        bd=0,
+        highlightthickness=0,
+        relief="ridge"
+    )
 
+    canvas = Canvas(
+        window,
+        bg="#FFFFFF",
+        height=792,
+        width=612,
+        bd=0,
+        highlightthickness=0,
+        relief="ridge"
+    )
+
+    canvas.place(x=0, y=0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        306.0,
+        396.0,
+        image=image_image_1
+    )
+
+    canvas.create_rectangle(
+        267.8320007324219,
+        573.0006089210513,
+        268.8320007324219,
+        614.0006103515625,
+        fill="#1E1E1E",
+        outline="")
+
+    canvas.create_rectangle(
+        266.8320007324219,
+        648.9993847610972,
+        267.8320007324219,
+        696.00341796875,
+        fill="#1E1E1E",
+        outline="")
+
+    canvas.create_rectangle(
+        268.0,
+        727.0,
+        269.0,
+        778.0,
+        fill="#1E1E1E",
+        outline="")
+
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        268.0,
+        563.0,
+        image=image_image_2
+    )
+
+    image_image_3 = PhotoImage(
+        file=relative_to_assets("image_3.png"))
+    image_3 = canvas.create_image(
+        269.0,
+        630.0,
+        image=image_image_3
+    )
+
+    image_image_4 = PhotoImage(
+        file=relative_to_assets("image_4.png"))
+    image_4 = canvas.create_image(
+        268.0,
+        712.0028076171875,
+        image=image_image_4
+    )
+
+    image_image_5 = PhotoImage(
+        file=relative_to_assets("image_5.png"))
+    image_5 = canvas.create_image(
+        292.0,
+        596.0,
+        image=image_image_5
+    )
+
+    image_image_6 = PhotoImage(
+        file=relative_to_assets("image_6.png"))
+    image_6 = canvas.create_image(
+        303.0,
+        373.0,
+        image=image_image_6
+    )
+
+    image_image_7 = PhotoImage(
+        file=relative_to_assets("image_7.png"))
+    image_7 = canvas.create_image(
+        303.0,
+        429.0,
+        image=image_image_7
+    )
+
+    image_image_8 = PhotoImage(
+        file=relative_to_assets("image_8.png"))
+    image_8 = canvas.create_image(
+        303.0,
+        485.0,
+        image=image_image_8
+    )
+
+    image_image_9 = PhotoImage(
+        file=relative_to_assets("image_9.png"))
+    image_9 = canvas.create_image(
+        294.0,
+        679.0,
+        image=image_image_9
+    )
+
+    image_image_10 = PhotoImage(
+        file=relative_to_assets("image_10.png"))
+    image_10 = canvas.create_image(
+        292.0,
+        746.0,
+        image=image_image_10
+    )
+
+    image_image_11 = PhotoImage(
+        file=relative_to_assets("image_11.png"))
+    image_11 = canvas.create_image(
+        275.0,
+        346.0,
+        image=image_image_11
+    )
+
+    image_image_12 = PhotoImage(
+        file=relative_to_assets("image_12.png"))
+    image_12 = canvas.create_image(
+        275.0,
+        402.0,
+        image=image_image_12
+    )
+
+    image_image_13 = PhotoImage(
+        file=relative_to_assets("image_13.png"))
+    image_13 = canvas.create_image(
+        275.0,
+        458.0,
+        image=image_image_13
+    )
+
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=save_as_pdf,
+        relief="flat"
+    )
+    button_1.place(
+        x=425.0,
+        y=758.0,
+        width=170.0,
+        height=23.0
+    )
+
+    canvas.create_text(
+        43.0,
+        67.0,
+        anchor="nw",
+        text=job,
+        fill="#1E1E1E",
+        font=("HeptaSlab Bold", 24 * -1)
+    )
+
+    canvas.create_text(
+        292.0,
+        549.0,
+        anchor="nw",
+        text=primaryeduc,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        300.0,
+        332.0,
+        anchor="nw",
+        text=firstwork,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        298.0,
+        390.0,
+        anchor="nw",
+        text=secondwork,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        35.0,
+        442.0,
+        anchor="nw",
+        text=skills1,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        35.0,
+        473.0,
+        anchor="nw",
+        text=skills2,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        35.0,
+        504.0,
+        anchor="nw",
+        text=skills3,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        35.0,
+        535.0,
+        anchor="nw",
+        text=skills4,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        35.0,
+        566.0,
+        anchor="nw",
+        text=skills5,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        35.0,
+        597.0,
+        anchor="nw",
+        text=skills6,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        273.0,
+        200.0,
+        anchor="nw",
+        text=aboutme,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        40.0,
+        267.0,
+        anchor="nw",
+        text=phone_number,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        40.0,
+        309.0,
+        anchor="nw",
+        text=email,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        40.0,
+        359.0,
+        anchor="nw",
+        text=place_address,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        303.0,
+        442.0,
+        anchor="nw",
+        text=thirdwork,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        290.0,
+        617.0,
+        anchor="nw",
+        text=secondaryeduc,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        290.0,
+        703.0,
+        anchor="nw",
+        text=tertiaryeduc,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        309.0,
+        581.0,
+        anchor="nw",
+        text=primarydate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        306.0,
+        667.0,
+        anchor="nw",
+        text=secondarydate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        313.0,
+        734.0,
+        anchor="nw",
+        text=tertiarydate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        326.0,
+        360.0,
+        anchor="nw",
+        text=firstdate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        325.0,
+        415.0,
+        anchor="nw",
+        text=seconddate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        325.0,
+        472.0,
+        anchor="nw",
+        text=thirddate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        43.0,
+        25.0,
+        anchor="nw",
+        text=name,
+        fill="#1E1E1E",
+        font=("HeptaSlab Bold", 32 * -1)
+    )
+    window.resizable(False, False)
+    window.mainloop()
+    viewresume()
+def template1():
+    def save_as_pdf():
+        pdf_file = "resume.pdf"
+
+        # Capture the Tkinter window as an image
+        x = window.winfo_rootx()
+        y = window.winfo_rooty()
+        width = window.winfo_width()
+        height = window.winfo_height()
+        screenshot = ImageGrab.grab(bbox=(x, y, x + width, y + height))
+
+        # Save the captured image to a file
+        screenshot.save("resume.png")
+
+        # Create a PDF and insert the captured image
+        c = pdf_canvas.Canvas(pdf_file, pagesize=letter)
+        image_path = "resume.png"
+        c.drawInlineImage(image_path, 0, 0, width=letter[0], height=letter[1])
+        c.save()
+
+        print(f"PDF saved as {pdf_file}")
+
+    OUTPUT_PATH = Path(__file__).parent
+    ASSETS_PATH = OUTPUT_PATH / Path(
+        r"C:\Users\ADMIN\Desktop\3E FILES\RESUMEGENERATOR\pythonProject2\Template1\build\assets\frame0")
+
+    def relative_to_assets(path: str) -> Path:
+        return ASSETS_PATH / Path(path)
+
+    window = Tk()
+
+    window.geometry("612x792")
+    window.configure(bg="#FFFFFF")
+
+    global name, phone_number, email, job, place_address, firstwork, firstdate, secondwork
+    global seconddate, thirdwork, thirddate, aboutme, skills1, skills2, skills3, skills4, skills5, skills6, primaryeduc, primarydate, secondaryeduc, secondarydate
+    global tertiaryeduc, tertiarydate
+
+    canvas = Canvas(
+        window,
+        bg="#FFFFFF",
+        height=792,
+        width=612,
+        bd=0,
+        highlightthickness=0,
+        relief="ridge"
+    )
+
+    canvas.place(x=0, y=0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        306.0,
+        396.0,
+        image=image_image_1
+    )
+
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        149.0,
+        286.0,
+        image=image_image_2
+    )
+
+    image_image_3 = PhotoImage(
+        file=relative_to_assets("image_3.png"))
+    image_3 = canvas.create_image(
+        149.0,
+        442.0,
+        image=image_image_3
+    )
+
+    image_image_4 = PhotoImage(
+        file=relative_to_assets("image_4.png"))
+    image_4 = canvas.create_image(
+        420.0,
+        186.0,
+        image=image_image_4
+    )
+
+    image_image_5 = PhotoImage(
+        file=relative_to_assets("image_5.png"))
+    image_5 = canvas.create_image(
+        410.0,
+        396.0,
+        image=image_image_5
+    )
+
+    image_image_6 = PhotoImage(
+        file=relative_to_assets("image_6.png"))
+    image_6 = canvas.create_image(
+        418.0,
+        616.0,
+        image=image_image_6
+    )
+
+    canvas.create_text(
+        55.0,
+        279.0,
+        anchor="nw",
+        text="ABOUT ME",
+        fill="#FFFFFF",
+        font=("HeptaSlab Bold", 12 * -1)
+    )
+
+    canvas.create_text(
+        55.0,
+        435.0,
+        anchor="nw",
+        text="EDUCATION",
+        fill="#FFFFFF",
+        font=("HeptaSlab Bold", 12 * -1)
+    )
+
+    canvas.create_text(
+        324.0,
+        179.0,
+        anchor="nw",
+        text="EXPERIENCE WORK",
+        fill="#2F3353",
+        font=("HeptaSlab Bold", 12 * -1)
+    )
+
+    canvas.create_text(
+        324.0,
+        389.0,
+        anchor="nw",
+        text="SKILLS",
+        fill="#2F3353",
+        font=("HeptaSlab Bold", 12 * -1)
+    )
+
+    canvas.create_text(
+        324.0,
+        609.0,
+        anchor="nw",
+        text="CONTACTS",
+        fill="#2F3353",
+        font=("HeptaSlab Bold", 12 * -1)
+    )
+
+    image_image_7 = PhotoImage(
+        file=relative_to_assets("image_7.png"))
+    image_7 = canvas.create_image(
+        33.0,
+        611.0,
+        image=image_image_7
+    )
+
+    image_image_8 = PhotoImage(
+        file=relative_to_assets("image_8.png"))
+    image_8 = canvas.create_image(
+        52.0,
+        538.0,
+        image=image_image_8
+    )
+
+    image_image_9 = PhotoImage(
+        file=relative_to_assets("image_9.png"))
+    image_9 = canvas.create_image(
+        352.0,
+        253.0,
+        image=image_image_9
+    )
+
+    image_image_10 = PhotoImage(
+        file=relative_to_assets("image_10.png"))
+    image_10 = canvas.create_image(
+        352.0,
+        309.0,
+        image=image_image_10
+    )
+
+    image_image_11 = PhotoImage(
+        file=relative_to_assets("image_11.png"))
+    image_11 = canvas.create_image(
+        352.0,
+        365.0,
+        image=image_image_11
+    )
+
+    image_image_12 = PhotoImage(
+        file=relative_to_assets("image_12.png"))
+    image_12 = canvas.create_image(
+        52.0,
+        621.0,
+        image=image_image_12
+    )
+
+    image_image_13 = PhotoImage(
+        file=relative_to_assets("image_13.png"))
+    image_13 = canvas.create_image(
+        52.0,
+        704.0,
+        image=image_image_13
+    )
+
+    image_image_14 = PhotoImage(
+        file=relative_to_assets("image_14.png"))
+    image_14 = canvas.create_image(
+        324.0,
+        226.0,
+        image=image_image_14
+    )
+
+    image_image_15 = PhotoImage(
+        file=relative_to_assets("image_15.png"))
+    image_15 = canvas.create_image(
+        324.0,
+        282.0,
+        image=image_image_15
+    )
+
+    image_image_16 = PhotoImage(
+        file=relative_to_assets("image_16.png"))
+    image_16 = canvas.create_image(
+        324.0,
+        338.0,
+        image=image_image_16
+    )
+
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=save_as_pdf,
+        relief="flat"
+    )
+    button_1.place(
+        x=425.0,
+        y=758.0,
+        width=170.0,
+        height=23.0
+    )
+
+    canvas.create_text(
+        43.0,
+        67.0,
+        anchor="nw",
+        text=job,
+        fill="#FFFFFF",
+        font=("HeptaSlab Bold", 24 * -1)
+    )
+
+    canvas.create_text(
+        66.0,
+        326.0,
+        anchor="nw",
+        text=aboutme,
+        fill="#FFFFFF",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        55.0,
+        484.0,
+        anchor="nw",
+        text=primaryeduc,
+        fill="#FFFFFF",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        349.0,
+        212.0,
+        anchor="nw",
+        text=firstwork,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        347.0,
+        270.0,
+        anchor="nw",
+        text=secondwork,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        322.0,
+        424.0,
+        anchor="nw",
+        text=skills1,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        322.0,
+        475.0,
+        anchor="nw",
+        text=skills3,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        322.0,
+        526.0,
+        anchor="nw",
+        text=skills5,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        322.0,
+        453.0,
+        anchor="nw",
+        text=skills2,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        322.0,
+        504.0,
+        anchor="nw",
+        text=skills4,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        322.0,
+        555.0,
+        anchor="nw",
+        text=skills6,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        343.0,
+        645.0,
+        anchor="nw",
+        text=phone_number,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        343.0,
+        676.0,
+        anchor="nw",
+        text=email,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        343.0,
+        704.0,
+        anchor="nw",
+        text=place_address,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        352.0,
+        322.0,
+        anchor="nw",
+        text=thirdwork,
+        fill="#1E1E1E",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        55.0,
+        559.0,
+        anchor="nw",
+        text=secondaryeduc,
+        fill="#FFFFFF",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        55.0,
+        645.0,
+        anchor="nw",
+        text=tertiaryeduc,
+        fill="#FFFFFF",
+        font=("HeptaSlab SemiBold", 12 * -1)
+    )
+
+    canvas.create_text(
+        71.0,
+        524.0,
+        anchor="nw",
+        text=primarydate,
+        fill="#FFFFFF",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        71.0,
+        609.0,
+        anchor="nw",
+        text=secondarydate,
+        fill="#FFFFFF",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        71.0,
+        689.0,
+        anchor="nw",
+        text=tertiarydate,
+        fill="#FFFFFF",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        375.0,
+        240.0,
+        anchor="nw",
+        text=firstdate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        374.0,
+        295.0,
+        anchor="nw",
+        text=seconddate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        374.0,
+        352.0,
+        anchor="nw",
+        text=thirddate,
+        fill="#1E1E1E",
+        font=("HeptaSlab Regular", 12 * -1)
+    )
+
+    canvas.create_text(
+        43.0,
+        25.0,
+        anchor="nw",
+        text=name,
+        fill="#FFFFFF",
+        font=("HeptaSlab Bold", 32 * -1)
+    )
+    window.resizable(False, False)
+    window.mainloop()
+    viewresume()
 def userinterface():
     OUTPUT_PATH = Path(__file__).parent
     ASSETS_PATH = OUTPUT_PATH / Path(
@@ -91,10 +964,20 @@ def userinterface():
     window.mainloop()
 
 def viewresume():
+    def backtoinput():
+        window.destroy()
+        inputcontext()
+
     OUTPUT_PATH = Path(__file__).parent
     ASSETS_PATH = OUTPUT_PATH / Path(
         r"C:\Users\ADMIN\Desktop\3E FILES\RESUMEGENERATOR\pythonProject2\selecttemplate\build\assets\frame0")
 
+    def get():
+        window.destroy()
+        template1()
+    def get2():
+        window.destroy()
+        template2()
     def relative_to_assets(path: str) -> Path:
         return ASSETS_PATH / Path(path)
 
@@ -128,7 +1011,7 @@ def viewresume():
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_1 clicked"),
+        command=backtoinput,
         relief="flat"
     )
     button_1.place(
@@ -152,7 +1035,7 @@ def viewresume():
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_2 clicked"),
+        command=get2,
         relief="flat"
     )
     button_2.place(
@@ -168,7 +1051,7 @@ def viewresume():
         image=button_image_3,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_3 clicked"),
+        command=get,
         relief="flat"
     )
     button_3.place(
@@ -188,7 +1071,6 @@ def viewresume():
     )
     window.resizable(False, False)
     window.mainloop()
-
 
 def inputcontext():
     OUTPUT_PATH = Path(__file__).parent
@@ -251,6 +1133,10 @@ def inputcontext():
         conn.commit()
 
     def saving_info():
+        global name, phone_number, email, job, place_address, firstwork, firstdate,secondwork
+        global seconddate, thirdwork, thirddate,aboutme,skills1,skills2, skills3,skills4,skills5,skills6,primaryeduc,primarydate,secondaryeduc,secondarydate
+        global tertiaryeduc,tertiarydate
+
         name = fullname.get()
         phone_number = phonenumber.get()
         email = emailadd.get()
@@ -1663,9 +2549,6 @@ def inputcontext():
 
     window.resizable(False, False)
     window.mainloop()
-
-
-
 
 
 #main
